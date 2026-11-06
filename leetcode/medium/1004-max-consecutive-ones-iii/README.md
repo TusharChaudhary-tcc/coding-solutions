@@ -38,9 +38,9 @@ Bolded numbers were flipped from 0 to 1. The longest subarray is underlined.
 ## Solution
 
 **Language:** C++  
-**Runtime:** 1 ms (beats 53.20%)  
-**Memory:** 79.3 MB (beats 28.33%)  
-**Submitted:** 2026-11-06T14:04:58.901Z  
+**Runtime:** 0 ms (beats 100.00%)  
+**Memory:** 79.4 MB (beats 28.33%)  
+**Submitted:** 2026-11-06T14:55:11.680Z  
 
 ```cpp
 class Solution {
@@ -50,13 +50,12 @@ public:
         int maxlen=0;
         while(r<nums.size()){
             if(nums[r]==0) zero++;
-            while(zero>k){
-                if(nums[l]==0){
-                    zero--;
-                }
+            int len=r-l+1;
+            if(zero>k){
+                if(nums[l]==0) zero--;
                 l++;
             }
-            if(zero<=k){
+            else{
                 maxlen=max(maxlen, r-l+1);
             }
             r++;
