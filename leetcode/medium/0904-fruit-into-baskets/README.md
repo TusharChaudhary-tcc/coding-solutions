@@ -55,9 +55,9 @@ If we had started at the first tree, we would only pick from trees [1,2].
 ## Solution
 
 **Language:** C++  
-**Runtime:** 0 ms  
-**Memory:** 8.4 MB  
-**Submitted:** 2026-11-07T14:02:28.884Z  
+**Runtime:** 46 ms (beats 52.16%)  
+**Memory:** 84.9 MB (beats 33.43%)  
+**Submitted:** 2026-11-07T14:12:17.886Z  
 
 ```cpp
 class Solution {
@@ -67,20 +67,19 @@ public:
         unordered_map<int, int> m;
         while(r<fruits.size()){
             m[fruits[r]]++;
-            // if(m.size()>2){
-                while(m.size()>2){
-                    m[fruits[l]]--;
-                    if(m[fruits[l]]==0){
-                        m.erase(fruits[l]);
-                    }
-                    l++;
+            if(m.size()>2){
+                m[fruits[l]]--;
+                if(m[fruits[l]]==0){
+                    m.erase(fruits[l]);
                 }
-            // }
+                l++;
+            }
             if(m.size()<=2){
                 maxlen=max(maxlen, r-l+1);
             }
             r++;
         }
+
         return maxlen;
     }
 };
