@@ -42,30 +42,31 @@ There may exists other ways to achieve this answer too.
 ## Solution
 
 **Language:** C++  
-**Runtime:** 0 ms  
-**Memory:** 8 MB  
-**Submitted:** 2026-11-13T14:55:46.148Z  
+**Runtime:** 2 ms (beats 72.87%)  
+**Memory:** 11 MB (beats 18.55%)  
+**Submitted:** 2026-11-13T15:02:20.370Z  
 
 ```cpp
 class Solution {
 public:
     int characterReplacement(string s, int k) {
-       
+        int l=0, r=0;
+        int maxfreq=0;
+        vector<int> hash(26, 0);
         int maxlen=0;
-        for(int i=0; i<s.size(); i++){
-            vector<int> hash(26, 0);
-            int maxfreq=0;
-            for(int j=i; j<s.size(); j++){
-                hash[s[j]-'A']++;
-                maxfreq=max(maxfreq, hash[s[j]-'A']);
-                int changes=(j-i+1)-maxfreq;
-                if(changes<=k){
-                    maxlen=max(maxlen, j-i+1);
-                }
-                else{
-                    break;
-                }
+        while(r<s.size()){
+            hash[s[r]-'A']++;
+            maxfreq=max(maxfreq, hash[s[r]-'A']);
+            int change=(r-l+1)-maxfreq;
+            if(change>k){
+                hash[s[l]-'A']--;
+                maxfreq=0;
+                l++;
             }
+            if(change<=k){
+                maxlen=max(maxlen, r-l+1);
+            }
+            r++;
         }
 
         return maxlen;
