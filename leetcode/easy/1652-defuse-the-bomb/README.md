@@ -18,6 +18,8 @@ Given the  **circular**  array `code` and an integer key `k`, return  *the decry
 
  
 
+Original
+C++
  **Example 1:** 
 
 ```
@@ -58,8 +60,8 @@ Explanation: The decrypted code is [3+9, 2+3, 4+2, 9+4]. Notice that the numbers
 
 **Language:** C++  
 **Runtime:** 0 ms (beats 100.00%)  
-**Memory:** 11.7 MB (beats 44.36%)  
-**Submitted:** 2026-11-01T17:26:58.422Z  
+**Memory:** 11.6 MB (beats 64.14%)  
+**Submitted:** 2026-11-25T19:14:14.599Z  
 
 ```cpp
 class Solution {
